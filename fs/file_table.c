@@ -59,10 +59,11 @@ static inline void file_free(struct file *f)
 /*
  * Return the total number of open files in the system
  */
-static long get_nr_files(void)
+long get_nr_files(void)
 {
 	return percpu_counter_read_positive(&nr_files);
 }
+EXPORT_SYMBOL(get_nr_files);
 
 /*
  * Return the maximum number of open files in the system
