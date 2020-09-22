@@ -655,6 +655,8 @@ static long hugetlbfs_fallocate(struct file *file, int mode, loff_t offset,
 		 */
 		unlock_page(page);
 		put_page(page);
+
+		pr_info("%s: index %lu: 0x%llx\n", file->f_path.dentry->d_iname, index, page_to_phys(page));
 	}
 
 	if (!(mode & FALLOC_FL_KEEP_SIZE) && offset + len > inode->i_size)
